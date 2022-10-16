@@ -14,6 +14,7 @@ InGame::InGame() {
   /*
     Resources for Countdown
   */
+  // These assets don't require folder? For example assets/fonts/...ttf
   one = new Sprite(Game::CreateText("1", "AldotheApache.ttf", color, 182));
   two = new Sprite(Game::CreateText("2", "AldotheApache.ttf", color, 182));
   three = new Sprite(Game::CreateText("3", "AldotheApache.ttf", color, 182));
@@ -226,7 +227,7 @@ void InGame::GameplayUpdate() {
   }
 
 
-  // Update valid gameobjects and delete those who arent valid
+  // Update valid game objects and delete those who aren't valid
   // if player is valid, else we would try to read players info
   if(player->isValid) {
     for(unsigned i=0; i<gameObjects.size(); ++i) {
@@ -243,15 +244,15 @@ void InGame::GameplayUpdate() {
 
   // Spawn enemys!
   spawnEnemyTimer += 1;
-  if(spawnEnemyTimer > 15) {
+  if (spawnEnemyTimer > 15) {
     // Random starting point on x axis
     int xpoint = ((rand() % Game::GetWidth()) + 1);
     gameObjects.push_back(new Enemy(xpoint, Game::GetHeight(), player));
     spawnEnemyTimer = 0;
   }
 
-  // Update ingame timer
-  if(startGameTimer) {
+  // Update in-game timer
+  if (startGameTimer) {
     elapsedTime = SDL_GetTicks() - gameStartTime;
 
     Milliseconds = elapsedTime;
@@ -282,6 +283,8 @@ void InGame::Render() {
         introStartTime = 0;
       }
 
+      // Use enum values for your cases like case FIRST_INTRO instead of hard coding 0
+      // Also case 0-3 are almost identical, I think you can extract to a function and pass slightly different values
       switch (introNumberIndex) {
         case 0: Game::RenderTexture(one->GetTexture(), Game::GetWidth()/2 - one->GetMidPointX(), Game::GetHeight()/2 - one->GetMidPointY());
                 break;
@@ -295,7 +298,7 @@ void InGame::Render() {
                 introNumberIndex = 0;
                 introStartTime = 0;
                 Game::SetShake(0, 0);
-                // Update player to avoid player flashin in the "wrong" positoin on screen
+                // Update player to avoid player flashing in the "wrong" position on screen
                 player->Update();
                 break;
       }
@@ -312,7 +315,7 @@ void InGame::Render() {
 
       // This is not a good way of rendering fast changeing textures.
       // Now we delete the texture and create a new one every rendering
-      // frame. Dont do this at home kids!
+      // frame. Don't do this at home kids!
       // With a Font atlas we could just change out the numbers from an
       // already loaded texture instead of rendering new ones.
 
@@ -322,6 +325,9 @@ void InGame::Render() {
       // See also, SDL_Font Cache project
 
       // That being said.. this is how we do it here :>
+
+      // Also you could extract text related things to it's own class so you don't
+      // need code to load fonts in all places you render text
 
       if(inGameTimer)
         delete inGameTimer;

@@ -25,7 +25,7 @@ class InGame : public GameState
 
   private:
 
-    enum InGameState {
+    enum InGameState { // Nice!
       COUNTDOWN,
       GAMEPLAY,
       GAMEOVER,

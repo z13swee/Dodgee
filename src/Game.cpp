@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-// Declear static members
+// Declare static members
 SDL_Renderer* Game::SDLRenderer = nullptr;
 SDL_Window* Game::SDLWindow = nullptr;
 int Game::shakeX = 0;
@@ -47,7 +47,7 @@ Game::~Game() {
 
 int Game::Initialize()
 {
-  //Start up SDL and make sure it went ok
+  // Start up SDL and make sure it went ok
 	if (SDL_Init(SDL_INIT_VIDEO) != 0){
     debug(LOG_ERROR) << "SDL_Init: " << SDL_GetError() << std::endl;
 		return 1;
@@ -61,7 +61,7 @@ int Game::Initialize()
   	return 1;
   }
 
-  //Initialize SDL_mixer
+  // Initialize SDL_mixer
   if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
   {
     debug(LOG_ERROR) << "MIXER_Init: " << SDL_GetError() << std::endl;
@@ -69,7 +69,7 @@ int Game::Initialize()
   	return 1;
   }
 
-  //Setup our window and renderer
+  // Setup our window and renderer
 	SDLWindow = SDL_CreateWindow("Dodgee!!", SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, (SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI));
 	if (SDLWindow == nullptr){
@@ -90,7 +90,7 @@ int Game::Initialize()
   // Enable alpha blending with RenderDraw functions
   SDL_SetRenderDrawBlendMode(SDLRenderer, SDL_BLENDMODE_BLEND);
 
-  //Set the current state ID
+  // Set the current state ID
   stateID = STATE_INTRO;
 
   //Set the current game state object
@@ -192,10 +192,10 @@ void Game::PlaySound(SoundEffect sound) {
 
 void Game::PlayMusic() {
 
-  if(Mute)
+  if (Mute)
     return;
 
-	if(Mix_PlayingMusic() == 0) {
+	if (Mix_PlayingMusic() == 0) {
 		Mix_PlayMusic( Music, -1 ); //Play the music
 	} else {
     //If the music is paused
@@ -240,8 +240,8 @@ SDL_Texture* Game::CreateText(const std::string &text, const std::string &fontfi
 
   TTF_SetFontStyle(font, style);
 
-  //We need to first render to a surface as that's what TTF_RenderText
-  //returns, then load that surface into a texture
+  // We need to first render to a surface as that's what TTF_RenderText
+  // returns, then load that surface into a texture
 
   SDL_Surface *surf = TTF_RenderText_Blended(font, text.c_str(), color);
   if (surf == nullptr){
@@ -255,7 +255,7 @@ SDL_Texture* Game::CreateText(const std::string &text, const std::string &fontfi
     debug(LOG_ERROR) << "CreateTexture: " << SDL_GetError() << std::endl;
   }
 
-  //Clean up the surface and font
+  // Clean up the surface and font
   SDL_FreeSurface(surf);
   TTF_CloseFont(font);
   return texture;
@@ -263,6 +263,7 @@ SDL_Texture* Game::CreateText(const std::string &text, const std::string &fontfi
 
 
 SDL_Texture* Game::CreateTexture(const std::string &file) {
+  // Maybe rename bilder to images/ or something in english
   std::string fontpath = "assets/bilder/" + file;
 
 	SDL_Texture *texture = IMG_LoadTexture(SDLRenderer, fontpath.c_str());
@@ -348,7 +349,7 @@ void Game::Run()
   int loops;
 
   // Setup background that will be rendering for every state
-  int scrollOffsetY = -720; // Screen height
+  int scrollOffsetY = -SCREEN_HEIGHT;
   Sprite* backgroundImage = new Sprite(Game::CreateTexture("BG.png"));
 
   unsigned int next_game_tick = SDL_GetTicks();
@@ -389,13 +390,13 @@ void Game::Run()
         Game::ClearScreen();
 
         if(scrollOffsetY >= 0)
-          scrollOffsetY = -720;
+          scrollOffsetY = -SCREEN_HEIGHT;
 
         scrollOffsetY += 2;
 
         // Render background images
-        RenderTexture(backgroundImage->GetTexture(),-30,scrollOffsetY);
-        RenderTexture(backgroundImage->GetTexture(),-30,scrollOffsetY+720);
+        RenderTexture(backgroundImage->GetTexture(), -30, scrollOffsetY);
+        RenderTexture(backgroundImage->GetTexture(), -30, scrollOffsetY + SCREEN_HEIGHT);
 
         currentState->Render();
 

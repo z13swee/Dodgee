@@ -14,6 +14,7 @@
 
 #define debug(level) logger(level, __PRETTY_FUNCTION__, __FILE__, __LINE__)
 
+// Nice, but will only work in bash :D
 #define BSLOG_ERROR "\033[0;31m-ERROR-\033[0;0m"
 #define BSLOG_WARNING "\033[0;33m-WARNING-\033[0;0m"
 #define BSLOG_INFO "\033[0;34m-INFO-\033[0;0m"
