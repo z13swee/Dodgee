@@ -1,8 +1,10 @@
 # Dodgee
 Game where the goal is to avoid projectile with your mouse
 
+    Add animated gif of gameplay here!
+
 # How to compile (Linux)
-Make sure CMake and the development libraries for SDL, SDL-Image, SDL-ttf, SDL-mixer are installed.  
+Make sure CMake and the development libraries for SDL, SDL-Image, SDL-ttf, SDL-mixer are installed.
 Then simply issue:
 
 ```
@@ -19,11 +21,11 @@ Once compiled and everything went well, issue:
 ```
 
 # TODO
-Change difficulty ramp, should be easier at the begining and ramp up  
-Make it playable with gamepad?  
+Change difficulty ramp, should be easier at the begining and ramp up
+Make it playable with gamepad?
 
-Add sound effect on the buttons  
-Add persinten highscore (including ability to input name)  
-Add top 5? names on the gameover screen  
-Add circular collision for more accurate representation  
-Add texture 'cache', avoid creating same texture mutiple times  
+Add sound effect on the buttons
+Add persistent highscore (including ability to input name)
+Add top 5? names on the Game Over screen
+Add circular collision for more accurate representation
+Add texture 'cache', avoid creating same texture mutiple times
