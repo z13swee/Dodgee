@@ -368,6 +368,7 @@ void InGame::Render() {
       Game::RenderTexture(titleimage->GetTexture(), CenterOfScreen - (titleimage->GetWidth()*4)/2, 0, 4.0f);
 
       switch (GUI::Button(continueButtonSprite->GetTexture(), continueButtonSprite->GetClip(), CenterOfScreen, 400, b1Size)) {
+        // You can simplify like if (button == BUTTON_RELEASED) {...;}
         case BUTTON_IDLE: b1Size = 3.0f; break;
         case BUTTON_HOVER: b1Size = 3.5f; break;
         case BUTTON_PRESSED: b1Size = 3.5f; break;
@@ -381,7 +382,8 @@ void InGame::Render() {
       }
 
       switch (GUI::Button(exitButtonSprite->GetTexture(), exitButtonSprite->GetClip(), CenterOfScreen, 500, b3Size)) {
-        case BUTTON_IDLE: b3Size = 3.0f; break;
+        // You can simplify like if (button == BUTTON_RELEASED) {Game::SetNextState( STATE_EXIT );}
+        case BUTTON_IDLE: b3Size = 3.0f;
         case BUTTON_HOVER: b3Size = 3.5f; break;
         case BUTTON_PRESSED: b3Size = 3.5f; break;
         case BUTTON_RELEASED: b3Size = 3.5f; Game::SetNextState( STATE_EXIT ); break;
