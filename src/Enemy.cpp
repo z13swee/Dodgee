@@ -39,20 +39,20 @@ void Enemy::Update() {
   }
 
   // CAP x accel
-  if(abs(myVelX) > MAX_Accel) {
+  if(abs(myVelX) > MAX_ACCEL) {
     if(myVelX > 0) {
-      myVelX = MAX_Accel;
+      myVelX = MAX_ACCEL;
     } else {
-      myVelX = -MAX_Accel;
+      myVelX = -MAX_ACCEL;
     }
   }
 
   // CAP y accel
-  if(abs(myVelY) > MAX_Accel) {
+  if(abs(myVelY) > MAX_ACCEL) {
     if(myVelY > 0) {
-      myVelY = MAX_Accel;
+      myVelY = MAX_ACCEL;
     } else {
-      myVelY = -MAX_Accel;
+      myVelY = -MAX_ACCEL;
     }
   }
 

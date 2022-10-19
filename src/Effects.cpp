@@ -20,6 +20,7 @@ void SimpleExplosion::Update() {
     life += 1.0f;
 
     for(int i=0; i<=totalDebries; i++) {
+        // If C++ 20 you can use std::numbers::pi
         auto theta = ((3.14f*2) / totalDebries);
         auto angle = theta * i;
 

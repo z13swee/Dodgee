@@ -97,6 +97,8 @@ private:
   static unsigned Highscore;
 
   // Contant Game Speed with Maximum FPS
+  // Maybe put all constants in a separate header?
+  // Not just these but things like screen width/height etc
   const int TICKS_PER_SECOND = 50;
   const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
   const int MAX_FRAMESKIP = 10;
@@ -108,6 +110,7 @@ private:
   static Mix_Chunk* explotion;
   static Mix_Chunk* death;
 
+  // English ;)
   // Kanske finns ett snyggare sätt att fixa en shake?
   static int shakeX;
   static int shakeY;

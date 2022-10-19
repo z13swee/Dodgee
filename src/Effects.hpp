@@ -1,11 +1,12 @@
 #ifndef EFFECTS_HPP
 #define EFFECTS_HPP
-/*
-    Collection of effects
-*/
+
 #include <vector>
 #include "Game.hpp"
 
+/*
+    Collection of effects
+*/
 class SimpleExplosion : public GameObject
  {
   public:

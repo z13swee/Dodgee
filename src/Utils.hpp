@@ -5,6 +5,8 @@
 #include <cmath>
 #include <SDL2/SDL.h>
 
+// Maybe add some comments what these functions do
+
 bool checkCollision( SDL_Rect a, SDL_Rect b );
 
 float Lerp(float start_value, float end_value, float pct);

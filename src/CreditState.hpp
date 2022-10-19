@@ -19,6 +19,7 @@ class CreditState : public GameState
 
       SDL_Color color = {255, 255, 255 ,255};
 
+      // Maybe put these in array instead?
       Sprite* TitleText = nullptr;
       Sprite* TextRad1 = nullptr;
       Sprite* TextRad2 = nullptr;

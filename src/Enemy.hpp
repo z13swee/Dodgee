@@ -4,6 +4,9 @@
 #include <memory>
 #include "Game.hpp"
 
+/**
+  Enemy class
+*/
 class Enemy : public GameObject
 {
   public:
@@ -23,7 +26,7 @@ class Enemy : public GameObject
 
     float myVelX = 0.0;
     float myVelY = 0.0;
-    float MAX_Accel = 5; //10 funkar bra också
+    float MAX_ACCEL = 5;
 
     float AccelerationX = rndAcc; //0.2;
     float AccelerationY = rndAcc; //0.2;

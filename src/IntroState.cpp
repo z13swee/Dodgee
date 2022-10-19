@@ -81,6 +81,7 @@ void Intro::Render()
   // Note: Buttons are drawn from its center, not top-left corner
   Game::RenderTexture(titleimage->GetTexture(), CenterOfScreen - (titleimage->GetWidth()*4)/2, titleImage_ypos, 4.0f);
 
+  // The buttons are handled almost exactly the same. Extract to a function!
   switch (GUI::Button(playButtonSprite->GetTexture(), playButtonSprite->GetClip(), CenterOfScreen, 400, b1Size)) {
     case BUTTON_IDLE: b1Size = 3.0f; break;
     case BUTTON_HOVER: b1Size = 3.5f; break;
