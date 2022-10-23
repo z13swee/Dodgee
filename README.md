@@ -1,6 +1,9 @@
 # Dodgee
 Game where the goal is to avoid projectile with your mouse
 
+![Screenshot menu](screenshots/Dodge_menu.png)
+![Screenshot menu](screenshots/Dodge_ingame.png)
+
 # How to compile (Linux)
 Make sure CMake and the development libraries for SDL, SDL-Image, SDL-ttf, SDL-mixer are installed.  
 Then simply issue:
